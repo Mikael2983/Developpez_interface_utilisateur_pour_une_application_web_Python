@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>JustStreamIt</title>
+        
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        
+        <script src="scripts/init.js"></script>
+        <script src="scripts/scripts.js" defer></script>
+        <script src="scripts/popup.js" defer></script>
+    </head>
+    
+    <body>
+        <!-- HEADER -->
+        <header>
+            <img src="images/logo.png" alt="Logo de JustStreamIt">
+            <h1>Vidéos à la demande</h1>
+        </header>
+        <!-- MAIN -->
+        <main>
+            <section>
+                <h2>Meilleur Film</h2>
+                <div class="bestMovies C0-1">
+                    <img class="item1">
+                    <div class="item2 text">
+                        <h2></h2>
+                        <p></p>
+                    </div>
+                    <button class="item3 button">Détails</button>  
+                </div>
+            </section>
+            <section>
+                <h2>Action</h2>
+                <div class="grid Action">
+                    <div class="grid-item C1-1">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item C1-2">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile C1-3">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile C1-4">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile tablette C1-5">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile tablette C1-6">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>                 
+                </div>
+                <button title ="Action" class="plus hide">Voir plus</button>
+            </section>
+            <section>
+                <h2>Mystery</h2>
+                <div class="grid Mystery">
+                    <div class="grid-item C2-1">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item C2-2">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile C2-3">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile C2-4">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile tablette C2-5">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile tablette C2-6">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                </div>
+                <button title ="Mystery" class="plus hide">Voir plus</button>
+            </section>
+            <section>
+                <h2 class="dropdown">Autre: </h2>
+                <select class="dropdown" id="categoriesDropdown">
+                </select>
+                <div class="grid result">
+                    <div class="grid-item hide C3-1">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item hide C3-2">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile hide C3-3">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile hide C3-4">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile tablette hide C3-5">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                    <div class="grid-item mobile tablette hide C3-6">
+                        <img>
+                        <div class="photo-hover">
+                            <p></p>
+                            <button class="button">Détails</button>
+                        </div>
+                    </div>
+                </div>
+                <button title ="result" class="plus hide">Voir plus</button>
+            </section>
+        </main>
+        <!-- Popup de partage -->
+        <div class="popupBackground">
+            <button class="btn fermer">❌</button>
+            <div class="popup container">
+                <div class="entete item1">
+                    <h2></h2>
+                    <h3 class="element1"></h3>
+                    <h3 class="element2"></h3>
+                    <h3 class="element3"></h3>
+                    <p class="element4"><b>Réalisé par :</b></p>
+                    <p class="element5"></p>
+                </div>
+                <img class ="img item2">
+                <div class="description item3">
+                    <p class="element1"></p>
+                </div>
+                <div class="distribution item4">
+                    <p class="fin">Avec :</p>
+                    <p class="fin element2"></p>
+                
+                </div>
+                <button class="button textBtn fermer">Fermer</button>        
+            </div>
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,361 @@
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'oswald', sans-serif;  
+}
+
+a {
+    font-size: 1em;
+    color: black;
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.1em;
+    color: black;
+}
+
+.fin {
+    font-weight: 100;
+}
+
+header {
+    background-color: #61787f ;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 80%;
+    margin: auto; 
+    border: 1px solid black;
+    margin-top: 30px;
+    justify-content: center;
+    align-content: center;
+}
+
+header h1 {
+    color: white;
+    align-content: center;
+    justify-self: left;
+}
+
+header img {
+    width: 127px;
+    height: 94px;
+    margin: 10px;
+}
+
+section {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.bestMovies {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    border: 6px solid black;
+    padding: 15px 15px 0px;
+    gap: 15px;
+}
+
+.text h2{
+    margin-top: 0px;
+    margin-bottom:0;
+    display: block;
+}
+
+.text p{
+    font-weight: lighter;
+}
+
+.button, .plus {
+    background-color: #fa0b0b ;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 1.3em;
+    color: white;
+    border-width: 0; 
+    margin-top: auto; 
+    margin-left:auto;
+    display: flex;
+}
+
+.button{
+    justify-items: end;  
+}
+
+.dropdown{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.photo-hover {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 50%; 
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    padding: 15px;
+}
+
+.photo-hover p {
+    color: white;
+    font-size: 1em;
+    margin-left: 30px;
+}
+
+.photo-hover .button {
+    background-color: #2d2c2c;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 50%;
+    
+}
+
+.popup button {
+    margin: auto;
+}
+
+.description {
+    margin-bottom: 20px;
+    max-width: 500px; 
+    max-height: 400px;
+    overflow-y: auto; 
+    overflow-x: hidden
+}
+
+h3 + p {
+    margin-top: 20px;
+} 
+
+.img {
+    display: flex;
+    justify-self: end;
+    object-fit: contain;
+}
+.grid-item:hover .photo-hover {
+    display: flex;
+    object-fit: cover;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px; 
+}
+  
+.item1 {
+    grid-area: item1;
+}
+
+.bestMovies .item1 {
+    width: 100%;
+    object-fit: cover;
+}
+.item2 {
+    grid-area: item2;
+}
+ 
+.item3 {
+    grid-area: item3;
+}
+
+.item4{
+    grid-area: item4;
+}
+
+.container {
+    grid-template-areas:
+      "item1 item2"
+      "item3 item3"
+      "item4 item4"
+      "textbtn textbtn";
+  }
+
+.bestMovies{
+    grid-template-areas:
+      "item1 item2 item2"
+      "item1 item4 item3"
+      ;
+}
+
+.popupBackground {
+    display: none;
+    position: absolute; 
+    top : 50%;
+    left: 50%;
+    z-index: 1000; 
+    width: 55%;
+    max-width: 500px; 
+    min-width: 300px;
+    transform: translate(-50%, -50%);
+}
+
+.entete {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto; 
+}
+.entete h2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+}
+.popup {
+    background-color: white;
+    padding: 10px;
+    border: 3px solid black;
+    overflow: hidden;
+}
+
+.textBtn{
+    position: relative;
+    left: 50%;
+}
+
+.active {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+    gap: 20px; 
+}
+
+.grid-item {
+    position: relative;
+    max-height: 350px;
+    display: flex; 
+    border: 1px solid black;
+    align-items: center;
+    overflow: hidden;
+}
+
+.grid-item img {
+    width: 100%; 
+    object-fit: contain;   
+}
+
+.plus {
+    margin: auto;
+    margin-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: 1em;
+}
+
+.hide {
+    display: none;
+}
+/* desktop */
+@media screen and (min-width: 769px) {
+    
+
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr; 
+    }
+    .btn{
+        display: none;
+    }
+} 
+/* tablette */
+@media screen and (max-width: 768px) {
+    
+    .grid {
+        grid-template-columns: 1fr 1fr;
+        margin: auto; 
+    }
+    .btn {
+        position: absolute;
+        left: 85%;
+        top: 20px;
+        background-color: white;
+        border: none;
+        font-size: 1.5em;
+        
+    }
+    .textBtn {
+        display: none;
+    }
+    
+    .tablette{
+        display: none;
+    }
+    
+    .plus {
+        display: flex;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+          "item1" 
+          "item3"
+          "item2"
+          "item4"
+          ;
+    }
+
+    .img {
+        justify-self: center;
+        width: 100%;
+    }
+}
+/* mobile */ 
+@media screen and (max-width: 455px) {
+    
+    h2{
+        display: flex;
+        justify-content: center;
+
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        margin: auto;
+    }
+
+    .mobile{
+        display:none;
+    }
+
+    header h1 {
+        display: none;
+    }
+
+    .bestMovies{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "item1" 
+          "item2" 
+          "item3";
+        margin: auto;
+        padding-bottom: 15px;
+    } 
+    
+}
+
