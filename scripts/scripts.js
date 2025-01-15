@@ -28,7 +28,7 @@ for (let index = 0; index < listButton.length; index++) {
     } else {
       if (event.target.classList.contains("button")){
       populatePopup(event.target.title);
-      console.log(event)
+      
       const mouseY = event.pageY + 200;
 
       afficherPopup(mouseY);
