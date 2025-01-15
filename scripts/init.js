@@ -14,13 +14,13 @@ async function findDataInApi(url){
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    
     const data = await response.json();
     return data;  
           
 } catch (error) {
   console.error("Erreur lors de la récupération des catégories :", error);
 }}
+
 /**
  * Cette fonction recherche la liste des catégories disponibles. 
  */
@@ -37,8 +37,9 @@ async function fetchCategories() {
             
   return categories;
   }
+
 /**
- * Cette fonction rempli les options du menu déroulant. 
+ * Cette fonction remplit les options du menu déroulant. 
  */  
 async function populateDropdown() {
   const categories = await fetchCategories();
@@ -50,8 +51,8 @@ async function populateDropdown() {
     option.value = categories[i];
     option.textContent = categories[i]; 
     dropdown.appendChild(option);
-  }
-  }
+  };
+  };
 /**
  * Cette fonction sélectionne une option aléatoire du menu déroulant. 
  */
@@ -60,8 +61,8 @@ async function selectRandomOption(){
   let dropdown = document.getElementById("categoriesDropdown");
   let randomIndex = Math.floor(Math.random() * dropdown.options.length);
   dropdown.selectedIndex = randomIndex;
-  return dropdown.options[randomIndex].value
-}
+  return dropdown.options[randomIndex].value;
+};
 /**
  * Cette fonction recherche le top 6 des films disponibles selon la catégorie. 
  */
@@ -71,7 +72,7 @@ async function fetchRatedFilm(category){
   let criterium = "?page_size=6&sort_by=-imdb_score";
   if (category !== "all") {
     criterium += `&genre=${category}`;
-  } 
+  };
 
   let url = `${baseUrl}${endpoint}${criterium}`;
   let films = [];
@@ -79,9 +80,10 @@ async function fetchRatedFilm(category){
   let data = await findDataInApi(url);
   films.push(...data.results);    
   return films; 
-  }
+  };
+
 /**
- * Cette fonction rempli la grid "htmlClass" de "outputNumber" éléments de la 
+ * Cette fonction remplit la grid "htmlClass" de "outputNumber" éléments de la 
  * catégorie "category" sélectionnée. 
  */
 async function populateCategory(category, htmlClass, outputNumber) {
@@ -89,16 +91,36 @@ async function populateCategory(category, htmlClass, outputNumber) {
   const filmsData = await fetchRatedFilm(category);
   
   for (let i = 0; i < outputNumber ; i++){
+
     let filmData = filmsData[i];
     let selector = htmlClass+`${i+1}`;
-    const grid = document.querySelector(selector);
-    
-    /* cacher la div si la liste des films ne comporte pas 6 éléments */
-    if (htmlClass === ".C3-" && filmData === undefined){
-      grid.classList.add("hide");
-      continue;
-    }
 
+    const grid = document.querySelector(selector);
+    let btn = document.querySelector('button[title="result"]')
+
+    /* options spécifiques à  la section Autre  */
+    if (htmlClass === ".C3-"){
+      /* cacher la div si la liste des films ne comporte pas 6 éléments */
+      if (filmData === undefined){
+        grid.classList.add("hide");
+
+        /* Masquer les boutons "Voir plus" s'il ne sont pas nécessaire */
+        if (filmsData.length <= 4 
+            && !btn.classList.contains("tablette-useless")){ 
+          btn.classList.add("tablette-useless");
+        };
+        if (filmsData.length <= 2 
+            && !btn.classList.contains("mobile-useless")){ 
+          btn.classList.add("mobile-useless");
+          btn.classList.remove("tablette-useless");
+        };
+        
+      continue;
+      };
+    };
+
+    btn.classList.remove("mobile-useless");
+    btn.classList.remove("tablette-useless");
     grid.classList.remove("hide");
     const image = document.querySelector(selector+" img");
     image.src = filmData.image_url;
@@ -128,6 +150,8 @@ async function populateCategory(category, htmlClass, outputNumber) {
     button.title = filmData.id;
     }
   }
+
+
 /**
  * Cette fonction initialise l'affichage de la page. 
  */

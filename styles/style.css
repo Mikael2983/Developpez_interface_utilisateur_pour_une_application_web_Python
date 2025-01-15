@@ -6,12 +6,6 @@ body {
     font-family: 'oswald', sans-serif;  
 }
 
-a {
-    font-size: 1em;
-    color: black;
-    text-decoration: none;
-}
-
 h1 {
     font-weight: 300;
 }
@@ -63,12 +57,16 @@ section {
     padding-bottom: 10px;
 }
 
-.text h2{
+/*
+* modifie les attributs du texte et des titres de 
+* l'encadré meilleur film 
+*/
+.text h2 {
     margin-top: 0px;
     margin-bottom:0;
 }
 
-.text p{
+.text p {
     font-weight: lighter;
 }
 
@@ -82,9 +80,13 @@ section {
     margin-top: auto; 
 }
 
+/*
+* met le menu déroulant sur la même ligne que le titre Autre.
+* et rajoute de l'espace entre le menu et le texte
+*/
 .dropdown{
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 15px;   
 }
 
 .photo-hover {
@@ -101,37 +103,15 @@ section {
 
 .photo-hover p {
     color: white;
-    margin-left: auto;
+    margin-left: 10px;
     font-size: clamp(14px, 2vw, 28px);
 }
 
 .photo-hover .button {
     background-color: #2d2c2c;
     font-size: 50%;
+    margin-left: auto;
     
-}
-
-.popup button {
-    margin: auto;
-}
-
-.description {
-    grid-area: item3;
-    margin-bottom: 20px;
-    max-width: 500px; 
-    max-height: 400px;
-    overflow-y: auto; 
-    overflow-x: hidden
-}
-
-h3 + p {
-    margin-top: 20px;
-} 
-
-.img {
-    display: flex;
-    justify-self: end;
-    object-fit: contain;
 }
 
 .grid-item:hover .photo-hover {
@@ -139,19 +119,29 @@ h3 + p {
     object-fit: cover;
 }
 
+
+
+/*
+* gére l'espace entre l'IMDB score et le réalisateur dans la popup
+*/
+h3 + p {
+    margin-top: 20px;
+} 
+
+.img {
+    justify-self: end;
+}
+
+
+
 .bestMovies img {
     grid-area: item1;
     width: 100%;
     object-fit: cover;
 }
 
-.textItem {
+.textItem , .imgItem2 {
     grid-area: item2;
-}
-
-.imgItem2 {
-    grid-area: item2;
-    
 }
 
 .btnItem {
@@ -160,25 +150,16 @@ h3 + p {
     margin-left: 0;
 }
 
+.description {
+    grid-area: item3;
+    margin-bottom: 20px;
+    max-width: 500px; 
+    max-height: 400px;
+    overflow-x: hidden
+}
 .distribution{
     grid-area: item4;
 }
-
-.popup {
-    background-color: white;
-    padding: 10px;
-    border: 3px solid black;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 10px;
-    grid-template-areas:
-      "item1 item2"
-      "item3 item3"
-      "item4 item4"
-      "textbtn textbtn";
-  }
 
 .bestMovies{
     display: grid;
@@ -193,10 +174,25 @@ h3 + p {
       ;
 }
 
+.popup {
+    background-color: white;
+    padding: 10px;
+    border: 3px solid black;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    grid-template-areas:
+      "item1 item2"
+      "item3 item3"
+      "item4 item4"
+      "textbtn textbtn";
+  }
+
+
 .popupBackground {
     display: none;
     position: absolute; 
-    top : 50%;
     left: 50%;
     z-index: 1000; 
     width: 55%;
@@ -208,7 +204,6 @@ h3 + p {
 .entete {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto; 
     grid-area: item1;
 }
 .entete h2 {
@@ -223,7 +218,9 @@ h3 + p {
     position: relative;
     left: 50%;
 }
-
+/* 
+* permet d'afficher la popup
+*/
 .active {
     display: flex;
 }
@@ -233,6 +230,7 @@ h3 + p {
     gap: 20px; 
 }
 
+
 .grid-item {
     position: relative;
     max-height: 350px;
@@ -241,29 +239,35 @@ h3 + p {
     align-items: center;
     overflow: hidden;
 }
-
+/* 
+* modification de la taille de l'image pour qu'elle
+* occupe l'intégralité de la largeur de la grid-item
+*/
 .grid-item img {
     width: 100%;   
 }
-
-.plus {
-    margin: auto;
-    margin-top: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    font-size: 1em;
-}
-
+/* 
+* masque les grid-items si il n'y a pas 
+* 6 films à afficher dans la catégorie
+*/
 .hide {
     display: none;
 }
 /* desktop */
 @media screen and (min-width: 769px) {
     
-
+    /* 
+    * grille d'affichage des affiches des films en mode desktop  
+    * en 3 colonnes égales
+    */
     .grid {
         grid-template-columns: 1fr 1fr 1fr; 
     }
+
+    /* 
+    * masque le bouton émoticônes  
+    * en mode desktop
+    */
     .btn{
         display: none;
     }
@@ -271,9 +275,18 @@ h3 + p {
 /* tablette */
 @media screen and (max-width: 768px) {
     
+    /* 
+    * grille d'affichage des affiches des films en mode tablette  
+    * en 2 colonnes égales
+    */
     .grid {
         grid-template-columns: 1fr 1fr; 
     }
+    
+    /* 
+    * affiche et positionne le bouton émoticônes 
+    * pour fermer la popup en mode tablette et mobile
+    */
     .btn {
         position: absolute;
         right: 15px;
@@ -283,18 +296,35 @@ h3 + p {
         font-size: 1.5em;
         
     }
+
+    /* Masque le bouton "fermer" de la popup en mode tablette et mobile */
     .textBtn {
         display: none;
     }
-    
+
+    /* 
+    * masque les grid-item en mode tablette  
+    * pour afficher 4 élements sur les 6
+    */
     .tablette{
         display: none;
     }
-    
+
+    /* affiche le bouton "voir plus" en mode tablette en mobile*/
     .plus {
+        margin: auto;
+        margin-top: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+        font-size: 1em;
         display: flex;
     }
 
+    /* 
+    * grille de la popup en mode tablette et mobile  
+    * disposition en 1 colonne 
+    * avec inversion de la description et de l'image
+    */
     .popup {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -305,40 +335,68 @@ h3 + p {
           "item4"
           ;
     }
-
+    /* 
+    * modification de la taille de l'image pour qu'elle
+    * occupe l'intégralité de la largeur de la popup
+    */
     .img {
-        justify-self: center;
         width: 100%;
+    }
+
+    /* 
+    * masque le bouton "result" ou "voir plus"
+    * en mode tablette si toutes les images de la catégorie sont 
+    * déjà affichées (moins de 4 élements à afficher sur la page)
+    */
+    .tablette-useless{
+        display: none;
     }
 }
 /* mobile */ 
 @media screen and (max-width: 455px) {
-    
+   
+    /* 
+    * passage du display de grid à flex pour centrer l'image
+    */
+    header {
+        display: flex;
+    }
+    /* 
+    * masque le titre du header en mode mobile
+    */
+    header h1 {
+        display: none;
+    }
+    /* 
+    * passage du display de block à flex puis centrage du texte
+    */
     h2{
         display: flex;
         justify-content: center;
 
     }
-
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-
+    
+    /* 
+    * grille d'affichage des affiches des films en mode mobile  
+    * passage à une colonne
+    */
     .grid {
         grid-template-columns: 1fr;
         margin: auto;
     }
 
+    /* 
+    * masque les grids en mode mobile  
+    * pour afficher 2 élements sur les 6
+    */
     .mobile{
         display:none;
     }
-
-    header h1 {
-        display: none;
-    }
-
+    
+    /* 
+    * modification de la grille d'affichage de la section bestMovies 
+    * en mode mobile en 1 colonne
+    */
     .bestMovies{
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -348,6 +406,12 @@ h3 + p {
         margin: auto;
         padding-bottom: 15px;
     } 
-    
+    /* affiche le bouton "result" en mode mobile si le mode tablette n'en a pas besoin*/
+    .tablette-useless{
+        display: flex;
+    }
+    /* masque le bouton "result" en mode mobile*/
+    .mobile-useless{
+        display: none;
+    } 
 }
-
