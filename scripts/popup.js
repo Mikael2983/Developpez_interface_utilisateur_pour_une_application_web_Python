@@ -16,7 +16,10 @@ async function populatePopup(filmId) {
 
     /* année - genres */
     let detail1 = document.querySelector(".entete h3.element1");
-    detail1.innerText = `${filmData.year} - ${filmData.genres}`;
+    detail1.innerText = `${filmData.year} -`;
+    for (let index = 0; index < filmData.genres.length; index++){
+        detail1.innerText += ` ${filmData.genres[index]}, `;
+    };
 
     /* classification - XXX minutes - (country1 - country2 - etc) */
     let detail2 = document.querySelector(".entete h3.element2");
@@ -40,8 +43,8 @@ async function populatePopup(filmId) {
             detail2.innerText = "Unk";
     }
     detail2.innerText += ` - ${filmData.duration} minutes (`;
-    for (let i = 0 ; i < filmData.countries; i++){
-        detail2.innerText += `${filmData.countries[i]}`;
+    for (let i = 0 ; i < filmData.countries.length; i++){
+        detail2.innerText += ` ${filmData.countries[i]}`;
     } 
     detail2.innerText += ` )`;
 
@@ -98,7 +101,6 @@ function cacherPopup() {
  **/
 async function findFilmDetails(filmId){
     const filmUrl = `http://localhost:8000/api/v1/titles/${filmId}`
-    const reponseFilm = await fetch(filmUrl);
-    const filmData = await reponseFilm.json();
+    const filmData = await findDataInApi(filmUrl);
     return filmData
     }
