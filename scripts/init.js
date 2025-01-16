@@ -64,12 +64,13 @@ async function selectRandomOption(){
   return dropdown.options[randomIndex].value;
 };
 /**
- * Cette fonction recherche le top 6 des films disponibles selon la catégorie. 
+ * Cette fonction recherche le top "outputNumber" des films
+ * de la catégorie. 
  */
-async function fetchRatedFilm(category){
+async function fetchRatedFilm(category, outputNumber){
   const baseUrl = "http://localhost:8000/api/v1";
   const endpoint = "/titles/";
-  let criterium = "?page_size=6&sort_by=-imdb_score";
+  let criterium = `?page_size=${outputNumber}&sort_by=-imdb_score`;
   if (category !== "all") {
     criterium += `&genre=${category}`;
   };
@@ -88,7 +89,7 @@ async function fetchRatedFilm(category){
  */
 async function populateCategory(category, htmlClass, outputNumber) {
   
-  const filmsData = await fetchRatedFilm(category);
+  const filmsData = await fetchRatedFilm(category, outputNumber);
   
   for (let i = 0; i < outputNumber ; i++){
 
@@ -98,13 +99,13 @@ async function populateCategory(category, htmlClass, outputNumber) {
     const grid = document.querySelector(selector);
     let btn = document.querySelector('button[title="result"]');
 
-    /* options spécifiques à  la section Autre  */
+    // options spécifiques à la section "Autre"
     if (htmlClass === ".C3-"){
-      /* cacher la div si la liste des films ne comporte pas 6 éléments */
+      // Cacher la div si la liste des films ne comporte pas 6 éléments
       if (filmData === undefined){
         grid.classList.add("hide");
 
-        /* Masquer les boutons "Voir plus" s'il ne sont pas nécessaire */
+        // Masquer les boutons "Voir plus" s'ils ne sont pas nécessaire
         if (filmsData.length <= 4 
             && !btn.classList.contains("tablette-useless")){ 
           btn.classList.add("tablette-useless");
@@ -118,7 +119,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
       continue;
       };
     };
-
+  
     btn.classList.remove("mobile-useless");
     btn.classList.remove("tablette-useless");
     grid.classList.remove("hide");
@@ -132,8 +133,9 @@ async function populateCategory(category, htmlClass, outputNumber) {
       image.src = "images/default.jpg";
       image.alt = "image par défaut";
     };
-    
-    if (category === "all"){
+
+    // Options spécifiques à  la section "meilleur film"
+    if (selector === ".C0-1"){
       const filmDataDetails = await findFilmDetails(filmData.id);
       
       const title = document.querySelector(selector+" h2");
@@ -156,7 +158,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
  * Cette fonction initialise l'affichage de la page. 
  */
 async function run(){
-  let listCategories = [ ["all", 1] , ["Action",6] , ["Mystery", 6] ];
+  let listCategories = [ ["all", 7] , ["Action",6] , ["Mystery", 6] ];
 
   const randomCategory = await selectRandomOption();
   listCategories.push([randomCategory,6]);
