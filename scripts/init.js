@@ -84,7 +84,7 @@ async function fetchRatedFilm(category){
 
 /**
  * Cette fonction remplit la grid "htmlClass" de "outputNumber" éléments de la 
- * catégorie "category" sélectionnée. 
+ * catégorie "category" sélectionnée.
  */
 async function populateCategory(category, htmlClass, outputNumber) {
   
@@ -96,7 +96,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
     let selector = htmlClass+`${i+1}`;
 
     const grid = document.querySelector(selector);
-    let btn = document.querySelector('button[title="result"]')
+    let btn = document.querySelector('button[title="result"]');
 
     /* options spécifiques à  la section Autre  */
     if (htmlClass === ".C3-"){
@@ -122,6 +122,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
     btn.classList.remove("mobile-useless");
     btn.classList.remove("tablette-useless");
     grid.classList.remove("hide");
+    
     const image = document.querySelector(selector+" img");
     image.src = filmData.image_url;
     image.alt = `affiche du film ${filmData.title}`;
@@ -133,7 +134,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
     };
     
     if (category === "all"){
-      const filmDataDetails = await findFilmDetails(filmData.id)
+      const filmDataDetails = await findFilmDetails(filmData.id);
       
       const title = document.querySelector(selector+" h2");
       title.textContent = filmDataDetails.title;
@@ -151,7 +152,6 @@ async function populateCategory(category, htmlClass, outputNumber) {
     }
   }
 
-
 /**
  * Cette fonction initialise l'affichage de la page. 
  */
@@ -159,11 +159,11 @@ async function run(){
   let listCategories = [ ["all", 1] , ["Action",6] , ["Mystery", 6] ];
 
   const randomCategory = await selectRandomOption();
-    listCategories.push([randomCategory,6]);
+  listCategories.push([randomCategory,6]);
 
   for (let i = 0; i< listCategories.length; i++){
-    populateCategory(listCategories[i][0], `.C${i}-`, listCategories[i][1])
-  }
+    populateCategory(listCategories[i][0], `.C${i}-`, listCategories[i][1]);
+  };
 }  
 
 run()

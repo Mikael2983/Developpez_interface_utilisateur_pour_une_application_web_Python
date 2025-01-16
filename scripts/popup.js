@@ -41,11 +41,11 @@ async function populatePopup(filmId) {
             break;
         default:
             detail2.innerText = "Unk";
-    }
+    };
     detail2.innerText += ` - ${filmData.duration} minutes (`;
     for (let i = 0 ; i < filmData.countries.length; i++){
         detail2.innerText += ` ${filmData.countries[i]}`;
-    } 
+    };
     detail2.innerText += ` )`;
 
     /* IMDB score: XX.XX */
@@ -79,7 +79,7 @@ async function populatePopup(filmId) {
  */
 function afficherPopup(positionY) {
     let popupBackground = document.querySelector(".popupBackground")
-    // La popup est masquée par défaut (display:none), ajouter la classe "active"
+    // La popup est masquée par défaut, ajouter la classe "active"
     // va changer son display et la rendre visible. 
     popupBackground.classList.add("active")
     
@@ -92,12 +92,12 @@ function afficherPopup(positionY) {
  */
 function cacherPopup() {
     let popupBackground = document.querySelector(".popupBackground")
-    // La popup est masquée par défaut (display:none), supprimer la classe "active"
+    // La popup est masquée par défaut, supprimer la classe "active"
     // va rétablir cet affichage par défaut. 
     popupBackground.classList.remove("active")
 }
 /**
- * Cette fonction recherche les données sur le film dans l'api
+ * Cette fonction recherche les données sur un film dans l'api
  **/
 async function findFilmDetails(filmId){
     const filmUrl = `http://localhost:8000/api/v1/titles/${filmId}`
