@@ -70,7 +70,7 @@ async function selectRandomOption(){
 async function fetchRatedFilm(category, outputNumber){
   const baseUrl = "http://localhost:8000/api/v1";
   const endpoint = "/titles/";
-  let criterium = `?page_size=${outputNumber}&sort_by=-imdb_score`;
+  let criterium = `?page_size=${outputNumber}&sort_by=-imdb_score,-votes`;
   if (category !== "all") {
     criterium += `&genre=${category}`;
   };
