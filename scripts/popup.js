@@ -51,7 +51,16 @@ async function populatePopup(filmId) {
     /* IMDB score: XX.XX */
     let detail3 = document.querySelector(".entete h3.element3");
     detail3.innerText = `IMDB score: ${filmData.imdb_score}`;
-
+    console.log(detail3)
+    /* Recettes mondiales */
+    let detail4 = document.querySelector(".entete h3.element4");
+    console.log(detail4)
+    console.log(filmData.worldwide_gross_income)
+    if (filmData.worldwide_gross_income) {
+        detail4.innerText = `Worldwide income : ${filmData.worldwide_gross_income}$`  
+    } else {
+        detail4.innerText = "Worldwide income : unknown"
+    }
     /* réalisateur */ 
     let detail5 = document.querySelector(".entete p.element5");;
     detail5.innerText = `${filmData.directors}`;
