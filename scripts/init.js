@@ -26,10 +26,12 @@ async function findDataInApi(url){
  */
 async function fetchCategories() {
   const baseUrl = "http://localhost:8000/api/v1";
-  const endpoint = "/genres/?page_size=30";
+  const endpoint = "/genres/";
   const categories = [];
 
   let url = `${baseUrl}${endpoint}`;
+  const dataPageSize = await findDataInApi(url);
+  url += `?page_size=${dataPageSize.count}`
   const data = await findDataInApi(url);
 
   const names = data.results.map(category => category.name);
