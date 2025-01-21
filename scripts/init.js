@@ -15,27 +15,26 @@ async function findDataInApi(url){
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
-    return data;  
-          
-} catch (error) {
+    return data;
+ 
+  } catch (error) {
   console.error("Erreur lors de la récupération des catégories :", error);
-}}
+  }
+}
 
 /**
  * Cette fonction recherche la liste des catégories disponibles. 
  */
 async function fetchCategories() {
   const baseUrl = "http://localhost:8000/api/v1";
-  const endpoint = "/genres/";
+  const endpoint = "/genres/?page_size=60";
   const categories = [];
 
   let url = `${baseUrl}${endpoint}`;
-  const dataPageSize = await findDataInApi(url);
-  url += `?page_size=${dataPageSize.count}`
   const data = await findDataInApi(url);
 
   const names = data.results.map(category => category.name);
-  categories.push(...names);      
+  categories.push(...names);
             
   return categories;
   }
@@ -43,7 +42,7 @@ async function fetchCategories() {
 /**
  * Cette fonction remplit les options du menu déroulant. 
  */  
-async function populateDropdown() {
+async function populateCategoryDropdown() {
   const categories = await fetchCategories();
 
   let dropdown = document.getElementById("categoriesDropdown");
@@ -58,7 +57,7 @@ async function populateDropdown() {
 /**
  * Cette fonction sélectionne une option aléatoire du menu déroulant. 
  */
-async function selectRandomOption(){
+async function selectRandomCategoryOption(){
   await populateDropdown();
   let dropdown = document.getElementById("categoriesDropdown");
   let randomIndex = Math.floor(Math.random() * dropdown.options.length);
