@@ -85,7 +85,7 @@ async function populatePopup(filmId) {
 /**
  * Cette fonction affiche la popup pour détailler la description. 
  */
-function afficherPopup(positionY) {
+function displayPopup(positionY) {
     let popupBackground = document.querySelector(".popupBackground")
     // La popup est masquée par défaut, ajouter la classe "active"
     // va changer son display et la rendre visible. 
@@ -98,7 +98,7 @@ function afficherPopup(positionY) {
 /**
  * Cette fonction cache la popup pour détailler la description. 
  */
-function cacherPopup() {
+function hidePopup() {
     let popupBackground = document.querySelector(".popupBackground")
     // La popup est masquée par défaut, supprimer la classe "active"
     // va rétablir cet affichage par défaut. 

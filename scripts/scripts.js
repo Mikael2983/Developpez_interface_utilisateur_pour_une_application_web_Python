@@ -23,14 +23,14 @@ for (let index = 0; index < listButton.length; index++) {
   listButton[index].addEventListener("click", (event) => {
     
     if(event.target.classList.contains("fermer")){
-      cacherPopup();
+      hidePopup();
     } else {
       if (event.target.classList.contains("button")){
       populatePopup(event.target.title);
       
       const mouseY = event.pageY + 200;
 
-      afficherPopup(mouseY);
+      displayPopup(mouseY);
       };
     };
   });
