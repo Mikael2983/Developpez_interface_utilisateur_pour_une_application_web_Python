@@ -4,6 +4,8 @@
 
 body {
     font-family: 'oswald', sans-serif;  
+    margin: auto;
+    max-width: 1200px;
 }
 
 h1 {
