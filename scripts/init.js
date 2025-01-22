@@ -25,17 +25,15 @@ async function findDataInApi(url){
 /**
  * Cette fonction recherche la liste des catégories disponibles. 
  */
-async function fetchCategories() {
+async function extractCategories() {
   const baseUrl = "http://localhost:8000/api/v1";
   const endpoint = "/genres/?page_size=50";
-  const categories = [];
-
+  
   let url = `${baseUrl}${endpoint}`;
   const data = await findDataInApi(url);
 
-  const names = data.results.map(category => category.name);
-  categories.push(...names);
-  console.log(categories);     
+  const categories = data.results.map(category => category.name);
+   
   return categories;
   }
 
@@ -43,7 +41,7 @@ async function fetchCategories() {
  * Cette fonction remplit les options du menu déroulant. 
  */  
 async function populateCategoryDropdown() {
-  const categories = await fetchCategories();
+  const categories = await extractCategories();
 
   let dropdown = document.getElementById("categoriesDropdown");
 
