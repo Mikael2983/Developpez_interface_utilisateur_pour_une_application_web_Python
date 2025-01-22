@@ -262,7 +262,7 @@ h3 + p {
     * masque le bouton émoticônes  
     * en mode desktop
     */
-    .btn{
+    .iconeBtn{
         display: none;
     }
 } 
@@ -281,7 +281,7 @@ h3 + p {
     * affiche et positionne le bouton émoticônes 
     * pour fermer la popup en mode tablette et mobile
     */
-    .btn {
+    .iconeBtn {
         position: absolute;
         right: 15px;
         top: 15px;
