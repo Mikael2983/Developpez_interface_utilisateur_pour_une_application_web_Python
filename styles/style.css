@@ -52,7 +52,9 @@ header img {
     height: 94px;
     margin: 10px;
 }
-
+main{
+    margin-bottom: 50px;
+}
 section {
     width: 80%;
     margin: auto;
