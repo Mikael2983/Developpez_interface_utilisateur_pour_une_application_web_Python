@@ -14,11 +14,11 @@ async function findDataInApi(url){
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const data = await response.json();
+    const data = response.json();
     return data;
  
   } catch (error) {
-  console.error("Erreur lors de la récupération des catégories :", error);
+  console.error("Erreur lors de la récupération des données :", error);
   }
 }
 
@@ -35,7 +35,7 @@ async function fetchCategories() {
 
   const names = data.results.map(category => category.name);
   categories.push(...names);
-            
+  console.log(categories);     
   return categories;
   }
 
