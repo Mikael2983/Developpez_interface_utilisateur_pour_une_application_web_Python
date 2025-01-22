@@ -95,7 +95,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
   
   for (let indice = 0; indice < outputNumber ; indice++){
 
-    let filmData = filmsData[i];
+    let filmData = filmsData[indice];
     let selector = htmlClass+`item${indice+1}`;
 
     const grid = document.querySelector(selector);
