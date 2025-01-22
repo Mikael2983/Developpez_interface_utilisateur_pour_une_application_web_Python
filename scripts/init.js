@@ -27,7 +27,7 @@ async function findDataInApi(url){
  */
 async function fetchCategories() {
   const baseUrl = "http://localhost:8000/api/v1";
-  const endpoint = "/genres/?page_size=60";
+  const endpoint = "/genres/?page_size=50";
   const categories = [];
 
   let url = `${baseUrl}${endpoint}`;
