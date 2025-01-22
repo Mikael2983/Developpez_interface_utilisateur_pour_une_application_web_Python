@@ -10,7 +10,7 @@
  */
 let categoriesDropdown = document.getElementById("categoriesDropdown");
 categoriesDropdown.addEventListener("change", (event) => {
-  populateCategory(event.target.value,".C3-", 6);
+  populateCategory(event.target.value,".Category3-", 6);
 });
 
 /**

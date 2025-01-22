@@ -93,16 +93,16 @@ async function populateCategory(category, htmlClass, outputNumber) {
   
   const filmsData = await fetchRatedFilm(category, outputNumber);
   
-  for (let i = 0; i < outputNumber ; i++){
+  for (let indice = 0; indice < outputNumber ; indice++){
 
     let filmData = filmsData[i];
-    let selector = htmlClass+`${i+1}`;
+    let selector = htmlClass+`item${indice+1}`;
 
     const grid = document.querySelector(selector);
     let btn = document.querySelector('button[title="result"]');
 
     // options spécifiques à la section "Autre"
-    if (htmlClass === ".C3-"){
+    if (htmlClass === ".Category3-"){
       // Cacher la div si la liste des films ne comporte pas 6 éléments
       if (filmData === undefined){
         grid.classList.add("hide");
@@ -137,7 +137,7 @@ async function populateCategory(category, htmlClass, outputNumber) {
     };
 
     // Options spécifiques à  la section "meilleur film"
-    if (selector === ".C0-1"){
+    if (selector === ".Category0-item1"){
       const filmDataDetails = await findFilmDetails(filmData.id);
       
       const title = document.querySelector(selector+" h2");
@@ -165,8 +165,8 @@ async function run(){
   const randomCategory = await selectRandomCategoryOption();
   listCategories.push([randomCategory,6]);
 
-  for (let i = 0; i< listCategories.length; i++){
-    populateCategory(listCategories[i][0], `.C${i}-`, listCategories[i][1]);
+  for (let index = 0; index< listCategories.length; index++){
+    populateCategory(listCategories[index][0], `.Category${index}-`, listCategories[index][1]);
   };
 }  
 
