@@ -5,6 +5,15 @@
  * 
  *********************************************************************************/
 /**
+ * Cette fonction recherche les données sur un film dans l'api
+ **/
+async function findFilmDetails(filmId){
+    const filmUrl = `http://localhost:8000/api/v1/titles/${filmId}`
+    const filmData = await findDataInApi(filmUrl);
+    return filmData
+}
+    
+/**
  * Cette fonction initialise le contenu de la popup de détails 
  */
 async function populatePopup(filmId) {
@@ -104,11 +113,4 @@ function hidePopup() {
     // va rétablir cet affichage par défaut. 
     popupBackground.classList.remove("active")
 }
-/**
- * Cette fonction recherche les données sur un film dans l'api
- **/
-async function findFilmDetails(filmId){
-    const filmUrl = `http://localhost:8000/api/v1/titles/${filmId}`
-    const filmData = await findDataInApi(filmUrl);
-    return filmData
-    }
+
