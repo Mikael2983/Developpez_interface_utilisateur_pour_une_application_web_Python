@@ -56,12 +56,12 @@ async function populatePopup(filmId) {
     let detail4 = document.querySelector(".entete h3.element4");
     
     if (filmData.worldwide_gross_income) {
-        detail4.innerText = `Worldwide income : ${filmData.worldwide_gross_income}$`  
+        detail4.innerText = `Worldwide income : ${filmData.worldwide_gross_income}$`; 
     } else {
-        detail4.innerText = "Worldwide income : unknown"
+        detail4.innerText = "Worldwide income : unknown";
     }
     /* réalisateur */ 
-    let detail5 = document.querySelector(".entete p.element5");;
+    let detail5 = document.querySelector(".entete p.element5");
     detail5.innerText = `${filmData.directors}`;
 
     /* affiche du film ou celle par défaut*/ 
