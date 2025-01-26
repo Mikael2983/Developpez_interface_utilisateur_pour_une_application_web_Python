@@ -55,8 +55,7 @@ async function populateCategoryDropdown() {
 /**
  * Cette fonction sélectionne une option aléatoire du menu déroulant. 
  */
-async function selectRandomCategoryOption(){
-  await populateCategoryDropdown();
+function selectRandomCategoryOption(){
   let dropdown = document.getElementById("categoriesDropdown");
   let randomIndex = Math.floor(Math.random() * dropdown.options.length);
   dropdown.selectedIndex = randomIndex;
@@ -159,8 +158,8 @@ async function populateCategory(category, htmlClass, outputNumber) {
  */
 async function run(){
   let listCategories = [ ["all", 7] , ["Action",6] , ["Mystery", 6] ];
-
-  const randomCategory = await selectRandomCategoryOption();
+  await populateCategoryDropdown();
+  const randomCategory = selectRandomCategoryOption();
   listCategories.push([randomCategory,6]);
 
   for (let index = 0; index< listCategories.length; index++){
